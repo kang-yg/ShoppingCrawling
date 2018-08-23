@@ -1,0 +1,13 @@
+import java.io.IOException;
+
+import javax.swing.text.Document;
+
+import org.jsoup.*;
+
+public class CostcoDrink {
+	public static void main(String[] args) {
+		try {
+			Document doc = Jsoup.connect("http://www.danawa.com").get();
+		}
+	}
+}

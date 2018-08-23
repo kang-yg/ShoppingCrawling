@@ -1,0 +1,14 @@
+import java.io.IOException;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+
+
+public class CostcoDrink {
+	public static void main(String[] args) {
+		try {
+			Document doc = Jsoup.connect("https://www.costco.co.kr/Food/Beverages/c/cos_10.11?q=%3Aprice-desc&page=0").get();
+		}
+	}
+}
