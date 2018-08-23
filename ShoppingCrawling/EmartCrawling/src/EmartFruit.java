@@ -7,18 +7,26 @@ import org.jsoup.select.Elements;
 
 public class EmartFruit {
 	public static void main(String[] args) {
-		String page = "3";
+		String mark = "------------------------------";
 		try {
-			Document doc = Jsoup.connect(
-					"http://emart.ssg.com/disp/category.ssg?dispCtgId=0006110002&page=" + page + "&pageSize=80&mallGb=1&brandIds=&benefit=&shpp=&cls=&salestrNo=&pickuSalestr=&clipSizeYn=&sizeIds=&viewType=&minsellPrc=&maxsellPrc=&prc=&sort=&brandMoreYn=&benefitMoreYn=")
-					.get();
-			Elements hotdeal = doc.select(".tmpl_itemlist");
-			Elements deal = hotdeal.select("li");
-
+			System.out.println(mark + "행사중인 상품" + mark);
+			Document doc = Jsoup.connect("http://emart.ssg.com/category/main.ssg?dispCtgId=0006110000").get();
+			Elements hotdeal = doc.select(".ctmpl_gs");
+			Elements deal = hotdeal.select(".cunit_info");
 			for (Element e : deal) {
 				System.out.println(e.text());
 			}
-			System.out.println("------------------------------1페이지------------------------------------------");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		try {
+			System.out.println(mark + "베스트 상품" + mark);
+			Document doc = Jsoup.connect("http://emart.ssg.com/category/main.ssg?dispCtgId=0006110000").get();
+			Elements hotdeal = doc.select(".ctmpl_gs_wrap .tit + .cunit_lst_v");
+			Elements deal = hotdeal.select(".cunit_info");
+			for (Element e : deal) {
+				System.out.println(e.text());
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

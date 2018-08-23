@@ -8,15 +8,16 @@ import org.jsoup.select.Elements;
 public class EmartFruit {
 	public static void main(String[] args) {
 		try {
-			Document doc = Jsoup.connect("https://www.costco.co.kr/Food/Fresh-Fruit/c/cos_10.10").get();
-			Elements hotdeal = doc.select(".product-listing.product-grid");
+			Document doc = Jsoup.connect("http://emart.ssg.com/category/main.ssg?dispCtgId=0006110000").get();
+			Elements hotdeal = doc.select(".ctmpl_gs");
 			Elements deal = hotdeal.select("li");
-			
-			for(Element e : deal) {
+
+			for (Element e : deal) {
 				System.out.println(e.text());
 			}
 			System.out.println("------------------------------1∆‰¿Ã¡ˆ------------------------------------------");
-		}catch (IOException e) {e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 }
